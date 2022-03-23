@@ -38,5 +38,4 @@ jobs:
           docker push docker.io/baloisemichaelmuehlebach/argocd-applicationset:v0.4.1
         if: github.event_name == 'push'
         env:
-          USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.TOKEN }}
