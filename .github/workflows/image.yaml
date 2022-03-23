@@ -28,7 +28,7 @@ jobs:
       - run: |
           IMAGE_PLATFORMS=linux/arm64
           echo "Building image for platforms: $IMAGE_PLATFORMS"
-          make image DOCKER_PUSH=false CONTAINER_REGISTRY=docker.io IMAGE_NAMESPACE=baloisemichaelmuehlebach IMAGE_TAG=0.4.1 IMAGE_PLATFORMS=${IMAGE_PLATFORMS}
+          make image DOCKER_PUSH=false CONTAINER_REGISTRY=docker.io IMAGE_NAMESPACE=baloisemichaelmuehlebach IMAGE_TAG=v0.4.1 IMAGE_PLATFORMS=${IMAGE_PLATFORMS}
         working-directory: ./src/applicationset
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -38,7 +38,7 @@ jobs:
       # Publish the image
       - run: |
           docker login docker.io --username $USERNAME --password $PASSWORD
-          docker push docker.io/baloisemichaelmuehlebach/argocd-applicationset:0.4.1
+          docker push docker.io/baloisemichaelmuehlebach/argocd-applicationset:v0.4.1
         if: github.event_name == 'push'
         env:
           USERNAME: ${{ secrets.USERNAME }}
