@@ -34,7 +34,7 @@ jobs:
 
       # Publish the image
       - run: |
-          docker login docker.io --username $USERNAME --password $PASSWORD
+          docker login docker.io --username baloisemichaelmuehlebach --password $PASSWORD
           docker push docker.io/baloisemichaelmuehlebach/argocd-applicationset:v0.4.1
         if: github.event_name == 'push'
         env:
