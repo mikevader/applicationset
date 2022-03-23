@@ -30,9 +30,6 @@ jobs:
           echo "Building image for platforms: $IMAGE_PLATFORMS"
           make image DOCKER_PUSH=false CONTAINER_REGISTRY=docker.io IMAGE_NAMESPACE=baloisemichaelmuehlebach IMAGE_TAG=v0.4.1 IMAGE_PLATFORMS=${IMAGE_PLATFORMS}
         working-directory: ./src/applicationset
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
 
 
       # Publish the image
