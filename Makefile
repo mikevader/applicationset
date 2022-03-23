@@ -47,7 +47,7 @@ test: generate fmt vet manifests
 
 .PHONY: image
 image: test
-	docker buildx build --platform $(IMAGE_PLATFORMS) -t ${IMAGE_PREFIX}${IMAGE_NAME}:${IMAGE_TAG} .
+	docker buildx build --push --platform $(IMAGE_PLATFORMS) -t ${IMAGE_PREFIX}${IMAGE_NAME}:${IMAGE_TAG} .
 
 .PHONY: image-push
 image-push: image
@@ -55,8 +55,8 @@ image-push: image
 
 .PHONY: deploy
 deploy: kustomize manifests
-	${KUSTOMIZE} build manifests/namespace-install | kubectl apply -f -
-	kubectl patch deployment -n argocd argocd-applicationset-controller --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value": "$(IMAGE)"}]'
+	# ${KUSTOMIZE} build manifests/namespace-install | kubectl apply -f -
+	# kubectl patch deployment -n argocd argocd-applicationset-controller --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value": "$(IMAGE)"}]'
 
 # Generate manifests e.g. CRD, RBAC etc.
 .PHONY: manifests
