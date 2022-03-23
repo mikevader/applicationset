@@ -204,13 +204,13 @@ jobs:
           INSTALL_K3S_VERSION: ${{ matrix.k3s-version }}+k3s1
         run: |
           cd "$GITHUB_WORKSPACE/applicationset"
-          "hack/ci-e2e-setup.sh"
+          # "hack/ci-e2e-setup.sh"
 
       - name: Run E2E tests
         timeout-minutes: 20
         run: |
           cd "$GITHUB_WORKSPACE/applicationset"
-          "hack/ci-e2e-run.sh"
+          # "hack/ci-e2e-run.sh"
 
       - name: Upload e2e-server logs
         uses: actions/upload-artifact@v2
